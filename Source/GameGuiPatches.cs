@@ -36,6 +36,10 @@ namespace WhatMapIsItAnyway
                     {
                         MapTargetsToHighlight.Add(Find.Maps.Find(m => m.Tile == target.Tile));
                     }
+                    else if (target.Thing is not Pawn && target.Thing is not Corpse) 
+                    {
+                        MapTargetsToHighlight.Add(Find.Maps.Find(m => m.Tile == target.Tile));
+                    }
                 }
                 else
                 {
