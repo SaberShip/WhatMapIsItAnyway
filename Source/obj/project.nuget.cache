@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "mvLP43Xh3aafH3rZJlq/+YLgSBE101lwK+AueDmTjXdOiQzrqeC2SLhESZoc5c90aY0kl2HCG2ecse8ggsr7mg==",
+  "success": true,
+  "projectFilePath": "D:\\Games\\RimworldModding\\RimWorld\\Mods\\WhatMapIsItAnyway\\Source\\WhatMapIsItAnyway.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Saber\\.nuget\\packages\\krafs.rimworld.ref\\1.3.3389\\krafs.rimworld.ref.1.3.3389.nupkg.sha512",
+    "C:\\Users\\Saber\\.nuget\\packages\\lib.harmony\\2.2.2\\lib.harmony.2.2.2.nupkg.sha512"
+  ],
+  "logs": []
+}
