@@ -63,9 +63,9 @@ namespace WhatMapIsItAnyway
 
         static void Prefix(ColonistBar __instance)
         {
-            List<Map> maps = __instance.Entries.Select(e => e.pawn.Map)
+            List<Map> maps = __instance.Entries.Select(e => e.map)
                 .Distinct()
-                .Where(m => TargetHighligterPatch.MapTargetsToHighlight.Contains(m))
+                .Where(m => m != null && TargetHighligterPatch.MapTargetsToHighlight.Contains(m))
                 .ToList();
 
             if (maps.NullOrEmpty())
