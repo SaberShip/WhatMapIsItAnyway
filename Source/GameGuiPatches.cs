@@ -53,7 +53,7 @@ namespace WhatMapIsItAnyway
         }
     }
 
-    // Highlight map if all pawns in the map are being highlighted
+
     [HarmonyPatch(typeof(ColonistBar), nameof(ColonistBar.ColonistBarOnGUI))]
     public static class ColonistBarGuiPatch
     {
@@ -68,9 +68,28 @@ namespace WhatMapIsItAnyway
                 .Where(m => m != null && TargetHighligterPatch.MapTargetsToHighlight.Contains(m))
                 .ToList();
 
-            if (maps.NullOrEmpty())
+            if (maps == null)
             {
                 return;
+            }
+
+            if (Find.World.renderer.wantedMode == WorldRenderMode.Planet && maps.Count == 0)
+            {
+                Map tileMap;
+                WorldObject worldObject = Find.WorldInterface.selector.SingleSelectedObject;
+                if (worldObject != null)
+                {
+                    tileMap = Find.Maps.Find(m => m.Tile == worldObject.Tile);
+                }
+                else
+                {
+                    tileMap = Find.Maps.Find(m => m.Tile == Find.WorldInterface.SelectedTile);
+                }
+
+                if (tileMap != null)
+                {
+                    maps.Add(tileMap);
+                }
             }
 
             foreach (Map map in maps)
@@ -91,7 +110,7 @@ namespace WhatMapIsItAnyway
 
             int? groupNum = __instance.Entries.Where(e => e.map == mapGroup)
                 .Select(e => e.group)
-                .First();
+                .FirstOrDefault();
 
             if (groupNum.HasValue)
             {
