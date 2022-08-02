@@ -77,18 +77,15 @@ namespace WhatMapIsItAnyway
             {
                 Map tileMap;
                 WorldObject worldObject = Find.WorldInterface.selector.SingleSelectedObject;
-                if (worldObject != null)
+                IEnumerable<WorldObject> objects = Find.WorldInterface.selector.SelectableObjectsUnderMouse();
+                if (!objects.EnumerableNullOrEmpty())
                 {
-                    tileMap = Find.Maps.Find(m => m.Tile == worldObject.Tile);
-                }
-                else
-                {
-                    tileMap = Find.Maps.Find(m => m.Tile == Find.WorldInterface.SelectedTile);
-                }
+                    tileMap = Find.Maps.Find(m => m.Tile == objects.FirstOrDefault().Tile);
 
-                if (tileMap != null)
-                {
-                    maps.Add(tileMap);
+                    if (tileMap != null)
+                    {
+                        maps.Add(tileMap);
+                    }
                 }
             }
 
