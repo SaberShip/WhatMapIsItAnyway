@@ -52,9 +52,10 @@ namespace WhatMapIsItAnyway
 
         static void Postfix(ref ChoiceLetter __result)
         {
-            if (WandererJoinsQuestPatch.mapToJoin != null)
+            if (__result != null && WandererJoinsQuestPatch.mapToJoin != null)
             {
                 __result.lookTargets = new LookTargets(WandererJoinsQuestPatch.mapToJoin.Tile);
+                WandererJoinsQuestPatch.mapToJoin = null;
             }
         }
     }
