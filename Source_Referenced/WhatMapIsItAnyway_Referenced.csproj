@@ -6,7 +6,7 @@
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	<PublicizeAsReferenceAssemblies>false</PublicizeAsReferenceAssemblies>
-	<OutputPath>..\Assemblies\</OutputPath>
+	<OutputPath>..\Referenced\</OutputPath>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	<DebugType>None</DebugType>
@@ -22,6 +22,12 @@
 	    <Version>2.2.*</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="RimWorld.CompatUtils" Version="1.2.3" />
+    <ProjectReference Include="..\Source\WhatMapIsItAnyway.csproj">
+      <Private>False</Private>
+    </ProjectReference>
+    <Reference Include="..\References\TacticalGroups.dll">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
+
 </Project>

@@ -1,7 +1,6 @@
 D:\Games\RimworldModding\RimWorld\Mods\WhatMapIsItAnyway\Assemblies\WhatMapIsItAnyway.dll
-D:\Games\RimworldModding\RimWorld\Mods\WhatMapIsItAnyway\Assemblies\WhatMapIsItAnyway.pdb
 D:\Games\RimworldModding\RimWorld\Mods\WhatMapIsItAnyway\Source\obj\Debug\WhatMapIsItAnyway.csproj.AssemblyReference.cache
 D:\Games\RimworldModding\RimWorld\Mods\WhatMapIsItAnyway\Source\obj\Debug\WhatMapIsItAnyway.GeneratedMSBuildEditorConfig.editorconfig
 D:\Games\RimworldModding\RimWorld\Mods\WhatMapIsItAnyway\Source\obj\Debug\WhatMapIsItAnyway.csproj.CoreCompileInputs.cache
+D:\Games\RimworldModding\RimWorld\Mods\WhatMapIsItAnyway\Source\obj\Debug\WhatMapIsItAnyway.csproj.CopyComplete
 D:\Games\RimworldModding\RimWorld\Mods\WhatMapIsItAnyway\Source\obj\Debug\WhatMapIsItAnyway.dll
-D:\Games\RimworldModding\RimWorld\Mods\WhatMapIsItAnyway\Source\obj\Debug\WhatMapIsItAnyway.pdb
