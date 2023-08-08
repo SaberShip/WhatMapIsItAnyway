@@ -25,7 +25,6 @@ namespace WhatMapIsItAnyway
                 .FirstOrDefault();
 
             if (groupNum.HasValue) {
-                Log.Message($"Highlighting Group {groupNum.Value}");
                 Rect groupBar = ColonistBarRef.GroupFrameRect(groupNum.Value);
                 groupBar.yMin = 3;
                 HighlightColonistGroup(groupBar);
@@ -35,7 +34,6 @@ namespace WhatMapIsItAnyway
         static void HighlightColonistGroup(Rect highlightBox)
         {
             if (highlightBox == null) {
-                Log.Message($"Highlight box is null");
                 return;
             }
 

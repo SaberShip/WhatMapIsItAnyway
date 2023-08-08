@@ -18,7 +18,7 @@ namespace WhatMapIsItAnyway
             var colonistBarOnGui = typeof(ColonistBar).GetMethod("ColonistBarOnGUI");
 
             if (CompatUtils.Compatibility.IsModActive("DerekBickley.LTOColonyGroupsFinal")) {
-                Log.Message($"WhatMapIsItAnyway :: [LTO] Colony Groups mod is active.");
+                Log.Message($"WhatMapIsItAnyway :: [LTO] Colony Groups mod found, patching TacticalColonistBar.");
                 ModConstants.LTO_COLONY_GROUPS_ACTIVE = true;
 
                 AddReferenceAsm(content);
@@ -28,9 +28,7 @@ namespace WhatMapIsItAnyway
                     .FirstOrDefault();
 
                 harmony.PatchAll(asm);
-                
             } else {
-                Log.Message("WhatMapIsItAnyway :: [LTO] Colony Groups mod is not active.");
                 ModConstants.LTO_COLONY_GROUPS_ACTIVE = false;
 
                 RemoveReferenceAsm(content);
@@ -51,7 +49,6 @@ namespace WhatMapIsItAnyway
             var asm = AssemblyDefinition.ReadAssembly(asmPath.FullName);
 
             foreach (var t in asm.MainModule.Types.ToArray()) {
-                Log.Message($"WhatMapIsItAnyway :: Remove Type: {t.FullName}");
                 asm.MainModule.Types.Remove(t);
             }
         }

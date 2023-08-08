@@ -3,7 +3,7 @@ using RimWorld;
 using RimWorld.Planet;
 using Verse;
 
-namespace WhatMapIsItAnyway
+namespace WhatMapIsItAnyway 
 {
     // Reset maps being highlighted starting with every update.
     [HarmonyPatch(typeof(Root), nameof(Root.Update))]
@@ -31,24 +31,20 @@ namespace WhatMapIsItAnyway
                     if ((target.Thing is Pawn) && !bar.GetColonistsInOrder().Contains((Pawn) target.Thing))
                     {
                         ColonistBarHighlighter.mapsToHighlight.Add(Find.Maps.Find(m => m.Tile == target.Tile));
-                        Log.Message($"Adding {target.Tile} to highlight list");
                     }
                     else if (target.Thing is not Pawn && target.Thing is not Corpse) 
                     {
                         ColonistBarHighlighter.mapsToHighlight.Add(Find.Maps.Find(m => m.Tile == target.Tile));
-                        Log.Message($"Adding {target.Tile} to highlight list");
                     }
                 }
                 else
                 {
                     ColonistBarHighlighter.mapsToHighlight.Add(Find.Maps.Find(m => m.Tile == target.Tile));
-                    Log.Message($"Adding {target.Tile} to highlight list");
                 }
             }
             else if (target.Tile >= 0)
             {
                 ColonistBarHighlighter.mapsToHighlight.Add(Find.Maps.Find(m => m.Tile == target.Tile));
-                Log.Message($"Adding {target.Tile} to highlight list");
             }
         }
     }
@@ -63,7 +59,6 @@ namespace WhatMapIsItAnyway
             if (highlight && ColonistBarHighlighter.mapsToHighlight.Contains(pawnMap))
             {
                 highlight = false;
-                Log.Message($"Stopping pawn highlight");
             }
         }
     }

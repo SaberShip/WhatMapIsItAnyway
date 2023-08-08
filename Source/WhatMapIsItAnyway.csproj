@@ -22,6 +22,9 @@
 	    <Version>2.2.*</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="RimWorld.CompatUtils" Version="1.2.3" />
+    <PackageReference Include="RimWorld.CompatUtils" Version="1.2.3">
+      <Private>False</Private>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>
