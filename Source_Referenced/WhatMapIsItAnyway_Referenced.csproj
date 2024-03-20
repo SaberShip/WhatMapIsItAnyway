@@ -6,7 +6,7 @@
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	<PublicizeAsReferenceAssemblies>false</PublicizeAsReferenceAssemblies>
-	<OutputPath>..\Referenced\</OutputPath>
+	<OutputPath>..\1.5\Referenced\</OutputPath>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	<DebugType>None</DebugType>
@@ -22,10 +22,11 @@
 	    <Version>2.3.1.1</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <ProjectReference Include="..\Source\WhatMapIsItAnyway.csproj">
-      <Private>False</Private>
-    </ProjectReference>
     <Reference Include="..\References\TacticalGroups.dll">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WhatMapIsItAnyway">
+      <HintPath>..\1.5\Assemblies\WhatMapIsItAnyway.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

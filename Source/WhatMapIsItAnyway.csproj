@@ -6,7 +6,7 @@
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	<PublicizeAsReferenceAssemblies>false</PublicizeAsReferenceAssemblies>
-	<OutputPath>..\Assemblies\</OutputPath>
+	<OutputPath>..\1.5\Assemblies\</OutputPath>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	<DebugType>None</DebugType>
