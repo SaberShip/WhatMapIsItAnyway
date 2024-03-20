@@ -14,14 +14,15 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3704">
-	  <Version>1.4.3527</Version>
+    <PackageReference Include="Krafs.Rimworld.Ref">
+	  <Version>1.4.3901</Version>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Lib.Harmony" Version="2.2.2">
-	    <Version>2.2.*</Version>
+    <PackageReference Include="Lib.Harmony">
+	    <Version>2.3.1.1</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
+    <PackageReference Include="Mono.Cecil" Version="0.11.5" />
     <PackageReference Include="RimWorld.CompatUtils" Version="1.2.3">
       <Private>False</Private>
       <ExcludeAssets>runtime</ExcludeAssets>
