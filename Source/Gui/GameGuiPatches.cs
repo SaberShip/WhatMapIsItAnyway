@@ -30,20 +30,24 @@ namespace WhatMapIsItAnyway
                 {
                     if ((target.Thing is Pawn) && !bar.GetColonistsInOrder().Contains((Pawn) target.Thing))
                     {
+                        // Target pawn exists on the given map but is not in the colonist bar to highlight, so highlight the group
                         ColonistBarHighlighter.mapsToHighlight.Add(Find.Maps.Find(m => m.Tile == target.Tile));
                     }
                     else if (target.Thing is not Pawn && target.Thing is not Corpse) 
                     {
+                        // Target is not a pawn or corpse and it exists on the given map, so highlight the group
                         ColonistBarHighlighter.mapsToHighlight.Add(Find.Maps.Find(m => m.Tile == target.Tile));
                     }
                 }
                 else
                 {
+                    // No target provided to highlight, so highlight the group
                     ColonistBarHighlighter.mapsToHighlight.Add(Find.Maps.Find(m => m.Tile == target.Tile));
                 }
             }
             else if (target.Tile >= 0)
             {
+                // Only a map tile is provided, highlight the group it corresponds to
                 ColonistBarHighlighter.mapsToHighlight.Add(Find.Maps.Find(m => m.Tile == target.Tile));
             }
         }
