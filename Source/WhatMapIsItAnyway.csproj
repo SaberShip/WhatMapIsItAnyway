@@ -28,4 +28,11 @@
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
   </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="FloatSubMenu">
+      <HintPath>..\References\FloatSubMenu.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
 </Project>
