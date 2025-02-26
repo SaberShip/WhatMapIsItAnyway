@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
+using TacticalGroups;
 using UnityEngine;
 using Verse;
 
@@ -11,8 +13,9 @@ namespace WhatMapIsItAnyway
     [HarmonyPatch(typeof(ColonistBarRef), nameof(ColonistBarRef.GroupFrameRect))]
     public static class TacticalGroupFrameRectPatch
     {
-        public static void Postfix(int group, ref Rect __result) {
+        public static bool Prefix(int group, ref Rect __result) {
             __result = TacticalColonistBarRef.GroupFrameRect(group);
+            return false;
         }
     }
 
@@ -20,8 +23,43 @@ namespace WhatMapIsItAnyway
     [HarmonyPatch(typeof(ColonistBarRef), nameof(ColonistBarRef.GetDrawLocs))]
     public static class TacticalGetDrawLocsPatch
     {
-        public static void Postfix(ref List<Rect> __result) {
+        public static void Postfix(ref List<Vector2> __result) {
             __result = TacticalColonistBarRef.GetDrawLocs();
+        }
+    }
+
+
+    // Highlight user created "ColonistGroups" when pawns in them are not displayed on the colonist bar
+    [HarmonyPatch(typeof(TargetHighlighter), nameof(TargetHighlighter.Highlight))]
+    public static class TacticalColonistGroupPatch
+    {
+        public static bool Prefix(GlobalTargetInfo target, bool colonistBar)
+        {
+            if (colonistBar && target.IsMapTarget && target.Tile >= 0 && target.Thing is Pawn)
+            {
+                Pawn pawn = (Pawn)target.Thing;
+                HashSet<ColonistGroup> groups = new HashSet<ColonistGroup>();
+                TacticUtils.TryGetGroups(pawn, out groups);
+                List<ColonistGroup> manualGroups = groups.Where(group => !group.isColonyGroup).ToList();
+                List<ColonistGroup> tacticalColonyGroupBoxes = groups.Where(group => group.isColonyGroup).ToList();
+
+                if (manualGroups.Any(group => !group.pawnIcons[pawn].isVisibleOnColonistBar))
+                {
+                    // Highlight the user defined group and skip the postfix
+                    ColonistBarHighlighter.additionalHighlights.AddRange(manualGroups.Select(group => group.curRect));
+                    TargetHighligterPatch.skipNextTarget = true;
+                    return false;
+                }
+                else if(tacticalColonyGroupBoxes.Any(group => !group.pawnIcons[pawn].isVisibleOnColonistBar))
+                {
+                    // Highlight the non user defined colony groups made by this mod and skip the postfix
+                    ColonistBarHighlighter.additionalHighlights.AddRange(tacticalColonyGroupBoxes.Select(group => group.curRect));
+                    TargetHighligterPatch.skipNextTarget = true;
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

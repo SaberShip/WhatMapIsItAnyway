@@ -17,14 +17,12 @@ namespace WhatMapIsItAnyway
             return TacticUtils.TacticalColonistBar.Size;
         }
 
-        public static List<Rect> GetDrawLocs() {
-            return TacticUtils.TacticalColonistBar.DrawLocs;
+        public static List<Vector2> GetDrawLocs() {
+            return TacticUtils.TacticalColonistBar.DrawLocs.Select(rect => rect.position).ToList();
         }
 
-        public static List<ColonistBar.Entry> GetColonistBarEntries() {
-            return TacticUtils.TacticalColonistBar.Entries
-                .Select(e => new ColonistBar.Entry(e.pawn, e.map, e.group))
-                .ToList();
+        public static List<TacticalColonistBar.Entry> GetColonistBarEntries() {
+			return TacticUtils.TacticalColonistBar.Entries;
         }
 
         public static Rect GroupFrameRect(int group)
@@ -32,12 +30,25 @@ namespace WhatMapIsItAnyway
 			float num = 99999f;
 			float num2 = 0f;
 			float num3 = 0f;
-			List<ColonistBar.Entry> entries = GetColonistBarEntries();
-			List<Rect> drawLocs = GetDrawLocs();
+			List<TacticalColonistBar.Entry> entries = GetColonistBarEntries();
+			List<Vector2> drawLocs = GetDrawLocs();
 			for (int i = 0; i < entries.Count; i++)
 			{
-				if (entries[i].group == group)
+				TacticalColonistBar.Entry entry = entries[i];
+				if (entry.group == group)
 				{
+					ColonistGroup colonistGroup = (ColonistGroup)entry.colonyGroup ?? entry.caravanGroup ?? null;
+
+					if (colonistGroup != null && entry.pawn != null)
+					{
+						Pawn pawn = entry.pawn;
+						if (!colonistGroup.pawnIcons.GetValueOrDefault(pawn).isVisibleOnColonistBar)
+						{
+							continue;
+						}
+					}
+
+
 					num = Mathf.Min(num, drawLocs[i].x);
 					num2 = Mathf.Max(num2, drawLocs[i].x + GetColonistBarSize().x);
 					num3 = Mathf.Max(num3, drawLocs[i].y + GetColonistBarSize().y);

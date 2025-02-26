@@ -12,6 +12,7 @@ namespace WhatMapIsItAnyway
         static void Prefix()
         {
             ColonistBarHighlighter.mapsToHighlight.Clear();
+            ColonistBarHighlighter.additionalHighlights.Clear();
         }
     }
 
@@ -19,9 +20,14 @@ namespace WhatMapIsItAnyway
     [HarmonyPatch(typeof(TargetHighlighter), nameof(TargetHighlighter.Highlight))]
     public static class TargetHighligterPatch
     {
+        public static bool skipNextTarget = false;
         static void Postfix(GlobalTargetInfo target, bool colonistBar)
-        { 
-            if (!colonistBar) return;
+        {
+            if (!colonistBar || skipNextTarget)
+            {
+                skipNextTarget = false;
+                return;
+            }
 
             if (target.IsMapTarget && target.Tile >= 0)
             {
