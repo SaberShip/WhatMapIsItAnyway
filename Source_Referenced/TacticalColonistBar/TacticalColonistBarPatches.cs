@@ -40,17 +40,21 @@ namespace WhatMapIsItAnyway
                 Pawn pawn = (Pawn)target.Thing;
                 HashSet<ColonistGroup> groups = new HashSet<ColonistGroup>();
                 TacticUtils.TryGetGroups(pawn, out groups);
-                List<ColonistGroup> manualGroups = groups.Where(group => !group.isColonyGroup).ToList();
-                List<ColonistGroup> tacticalColonyGroupBoxes = groups.Where(group => group.isColonyGroup).ToList();
+                List<ColonistGroup> manualGroups = groups.Where(group => group is PawnGroup).ToList();
+                List<ColonistGroup> tacticalColonyGroupBoxes = groups.Where(group => group is ColonyGroup).ToList();
 
-                if (manualGroups.Any(group => !group.pawnIcons[pawn].isVisibleOnColonistBar))
+                if (manualGroups.Any(group => !group.pawnIcons.GetValueOrDefault(pawn, new PawnIcon(pawn)).isVisibleOnColonistBar))
                 {
+                    if (pawn.Map != Find.CurrentMap)
+                    {
+                        return true;
+                    }
                     // Highlight the user defined group and skip the postfix
                     ColonistBarHighlighter.additionalHighlights.AddRange(manualGroups.Select(group => group.curRect));
                     TargetHighligterPatch.skipNextTarget = true;
                     return false;
                 }
-                else if(tacticalColonyGroupBoxes.Any(group => !group.pawnIcons[pawn].isVisibleOnColonistBar))
+                else if(tacticalColonyGroupBoxes.Any(group => !group.pawnIcons.GetValueOrDefault(pawn, new PawnIcon(pawn)).isVisibleOnColonistBar))
                 {
                     // Highlight the non user defined colony groups made by this mod and skip the postfix
                     ColonistBarHighlighter.additionalHighlights.AddRange(tacticalColonyGroupBoxes.Select(group => group.curRect));
