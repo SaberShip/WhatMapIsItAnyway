@@ -20,34 +20,27 @@ namespace WhatMapIsItAnyway
         {
             var pawnsByMap = __result.Where(e => e.payload != null && e.payload.Map != null)
                 .GroupBy(e => e.payload.Map)
-                .ToDictionary(e => e.Key, e => e.Select(menu => menu.option).ToList());
+                .ToDictionary(e => e.Key.ToString(), e => e.Select(menu => menu.option).ToList());
 
-            /*if (pawnsByMap.Count < 2)
+            if (pawnsByMap.Count < 2)
             {
                 // Only one map, change nothing
                 return;
-            }*/
-
-            Log.Message("Making sub menus:" + pawnsByMap.Count());
-            Log.Message("Keys:" + pawnsByMap.Keys);
+            }
 
             // Start with generic restrictions (not pawn specific)
             var restrictions = from element in __result where element.payload == null select element;
 
             // Add remaining restriction options organized by map for which they reside.
-            foreach (Map map in pawnsByMap.Keys)
+            foreach (String mapName in pawnsByMap.Keys)
             {
-                var pawns = pawnsByMap[map];
-
-
+                var pawns = pawnsByMap[mapName];
 
                 if (!pawns.NullOrEmpty())
                 {
-                    Log.Message("Making sub menu map for:" + map.ToString() + pawns.Count());
-
                     restrictions = restrictions.AddItem(new Widgets.DropdownMenuElement<Pawn>
                     {
-                        option = FloatSubMenu.CompatCreate(map.ToString(), pawns),
+                        option = FloatSubMenu.CompatCreate(mapName, pawns),
                         payload = null
                     });
                 }
