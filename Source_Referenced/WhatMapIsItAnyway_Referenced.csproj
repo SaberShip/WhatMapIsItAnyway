@@ -22,6 +22,7 @@
 	    <Version>2.3.1.1</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
+    <PackageReference Include="RimWorld.MultiplayerAPI" Version="0.5.0" />
     <Reference Include="..\References\TacticalGroups.dll">
       <Private>False</Private>
     </Reference>
