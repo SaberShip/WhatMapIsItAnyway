@@ -2,27 +2,36 @@
 using RimWorld;
 using Multiplayer.API;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TacticalGroups;
 using UnityEngine;
 using Verse;
+using System.Reflection;
 
 namespace WhatMapIsItAnyway.TacticalColonistBar
 {
-    [HarmonyPatch("ColonistBarTimeControl", "DrawButtons", MethodType.Normal)]
+    [HarmonyPatch]
     public static class DrawingMpTimeControlButtons
     {
-        public static void Prefix()
+        static MethodBase TargetMethod()
+        {
+            var type = AccessTools.TypeByName("ColonistBarTimeControl");
+            return AccessTools.Method(typeof(Dialog_BillConfig), "DrawButtons");
+        }
+
+        static bool Prepare()
+        {
+            // Only Patch is multiplayer is present and active.
+            return CompatUtils.Compatibility.IsModActive("rwmt.multiplayer");
+        }
+
+        static void Prefix()
         {
             if (!MP.enabled || !MP.IsInMultiplayer) return;
 
             GetGroupFrameRectPatch.DrawingTimeControls = true;
         }
 
-        public static void Postfix()
+        static void Postfix()
         {
             if (!MP.enabled || !MP.IsInMultiplayer) return;
 
