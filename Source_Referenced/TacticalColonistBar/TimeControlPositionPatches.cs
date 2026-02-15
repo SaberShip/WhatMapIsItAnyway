@@ -15,12 +15,12 @@ namespace WhatMapIsItAnyway.TacticalColonistBar
         static MethodBase TargetMethod()
         {
             var type = AccessTools.TypeByName("ColonistBarTimeControl");
-            return AccessTools.Method(typeof(Dialog_BillConfig), "DrawButtons");
+            return AccessTools.Method(type, "DrawButtons");
         }
 
         static bool Prepare()
         {
-            // Only Patch is multiplayer is present and active.
+            // Only Patch if multiplayer is present and active.
             return CompatUtils.Compatibility.IsModActive("rwmt.multiplayer");
         }
 
@@ -48,7 +48,7 @@ namespace WhatMapIsItAnyway.TacticalColonistBar
         {
             if (DrawingTimeControls)
             {
-                __result.x = TacticalColonistBarRef.GroupFrameRect(group).x;
+                __result = TacticalColonistBarRef.GroupFrameRect(group);
             }
         }
     }

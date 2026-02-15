@@ -15,8 +15,8 @@ namespace WhatMapIsItAnyway {
             return Find.ColonistBar.Size;
         }
 
-        public static List<Vector2> GetDrawLocs() {
-			return Find.ColonistBar.DrawLocs;
+        public static List<Rect> GetDrawLocs() {
+			return Find.ColonistBar.DrawLocs.Select(vec => new Rect(vec, Vector2.zero)).ToList();
         }
 
         public static List<ColonistBar.Entry> GetColonistBarEntries() {
@@ -29,7 +29,7 @@ namespace WhatMapIsItAnyway {
 			float num2 = 0f;
 			float num3 = 0f;
 			List<ColonistBar.Entry> entries = GetColonistBarEntries();
-			List<Vector2> drawLocs = GetDrawLocs();
+			List<Rect> drawLocs = GetDrawLocs();
 			for (int i = 0; i < entries.Count; i++)
 			{
 				if (entries[i].group == group)

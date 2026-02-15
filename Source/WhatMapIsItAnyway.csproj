@@ -6,7 +6,7 @@
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	<PublicizeAsReferenceAssemblies>false</PublicizeAsReferenceAssemblies>
-	<OutputPath>..\1.6\Assemblies\</OutputPath>
+	<OutputPath>..\1.5\Assemblies\</OutputPath>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	<DebugType>None</DebugType>
@@ -15,7 +15,7 @@
   
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
-	  <Version>1.6.4566</Version>
+	  <Version>1.5.4409</Version>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Lib.Harmony">

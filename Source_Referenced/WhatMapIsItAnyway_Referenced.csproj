@@ -6,7 +6,7 @@
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	<PublicizeAsReferenceAssemblies>false</PublicizeAsReferenceAssemblies>
-	<OutputPath>..\1.6\Referenced\</OutputPath>
+	<OutputPath>..\1.5\Referenced\</OutputPath>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	<DebugType>None</DebugType>
@@ -14,10 +14,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Krafs.Rimworld.Ref">
-	  <Version>1.6.4566</Version>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4409" />
     <PackageReference Include="Lib.Harmony">
 	    <Version>2.4.1</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
@@ -25,7 +22,7 @@
     <PackageReference Include="RimWorld.CompatUtils" Version="1.2.3">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="RimWorld.MultiplayerAPI" Version="0.6.0" />
+    <PackageReference Include="RimWorld.MultiplayerAPI" Version="0.5.0" />
     <Reference Include="..\References\TacticalGroups.dll">
       <Private>False</Private>
     </Reference>

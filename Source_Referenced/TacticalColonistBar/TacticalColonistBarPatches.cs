@@ -23,7 +23,7 @@ namespace WhatMapIsItAnyway
     [HarmonyPatch(typeof(ColonistBarRef), nameof(ColonistBarRef.GetDrawLocs))]
     public static class TacticalGetDrawLocsPatch
     {
-        public static void Postfix(ref List<Vector2> __result) {
+        public static void Postfix(ref List<Rect> __result) {
             __result = TacticalColonistBarRef.GetDrawLocs();
         }
     }
@@ -45,7 +45,7 @@ namespace WhatMapIsItAnyway
 
                 if (manualGroups.Any(group => !group.pawnIcons.GetValueOrDefault(pawn, new PawnIcon(pawn)).isVisibleOnColonistBar))
                 {
-                    if (WorldRendererUtility.WorldRendered || pawn.Map != Find.CurrentMap)
+                    if (WorldRendererUtility.WorldRenderedNow || pawn.Map != Find.CurrentMap)
                     {
                         return true;
                     }
