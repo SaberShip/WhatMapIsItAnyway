@@ -6,7 +6,7 @@
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	<PublicizeAsReferenceAssemblies>false</PublicizeAsReferenceAssemblies>
-	<OutputPath>..\1.5\Referenced\</OutputPath>
+	<OutputPath>..\1.6\Referenced\</OutputPath>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	<DebugType>None</DebugType>
@@ -14,7 +14,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4409" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4633" />
     <PackageReference Include="Lib.Harmony">
 	    <Version>2.4.1</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
@@ -27,7 +27,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="WhatMapIsItAnyway">
-      <HintPath>..\1.5\Assemblies\WhatMapIsItAnyway.dll</HintPath>
+      <HintPath>..\1.6\Assemblies\WhatMapIsItAnyway.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

@@ -45,7 +45,7 @@ namespace WhatMapIsItAnyway
 
                 if (manualGroups.Any(group => !group.pawnIcons.GetValueOrDefault(pawn, new PawnIcon(pawn)).isVisibleOnColonistBar))
                 {
-                    if (WorldRendererUtility.WorldRenderedNow || pawn.Map != Find.CurrentMap)
+                    if (WorldRendererUtility.WorldRendered || pawn.Map != Find.CurrentMap)
                     {
                         return true;
                     }
